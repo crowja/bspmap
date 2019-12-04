@@ -1,6 +1,6 @@
 /**
  *  @file bspmap.c
- *  @version 0.0.0
+ *  @version 0.1.0-dev0
  *  @date Tue Dec  3 21:53:43 CST 2019
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
@@ -78,7 +78,7 @@ bspmap_init(struct bspmap *p, unsigned nblocks, unsigned *sblocks)
 const char *
 bspmap_version(void)
 {
-   return "0.0.0";
+   return "0.1.0-dev0";
 }
 
 /*** bspmap_global_idx_is_valid() */

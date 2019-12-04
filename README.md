@@ -1,4 +1,4 @@
-# bspmap 0.0.0
+# bspmap 0.1.0-dev0
 
 Coordinate/index mappers for block sparse matrices.
 
