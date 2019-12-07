@@ -1,7 +1,7 @@
 /**
  *  @file bspmap.c
  *  @version 0.1.0-dev0
- *  @date Tue Dec  3 21:53:43 CST 2019
+ *  @date Sat Dec  7 11:39:34 CST 2019
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
  *  @details FIXME
@@ -28,8 +28,6 @@ struct bspmap {
    unsigned   *cblocks;
 };
 
-/*** bspmap_new() ***/
-
 struct bspmap *
 bspmap_new(void)
 {
@@ -45,8 +43,6 @@ bspmap_new(void)
    return tp;
 }
 
-/*** bspmap_free() ***/
-
 void
 bspmap_free(struct bspmap *p)
 {
@@ -54,8 +50,6 @@ bspmap_free(struct bspmap *p)
    _FREE(p->cblocks);
    _FREE(p);
 }
-
-/*** bspmap_init() ***/
 
 int
 bspmap_init(struct bspmap *p, unsigned nblocks, unsigned *sblocks)
@@ -73,23 +67,17 @@ bspmap_init(struct bspmap *p, unsigned nblocks, unsigned *sblocks)
    return 0;
 }
 
-/*** bspmap_version() ***/
-
 const char *
 bspmap_version(void)
 {
    return "0.1.0-dev0";
 }
 
-/*** bspmap_global_idx_is_valid() */
-
 int
 bspmap_global_idx_is_valid(struct bspmap *p, unsigned gidx)
 {
    return gidx < (p->cblocks)[p->nblocks - 1];
 }
-
-/*** bspmap_global_to_local() ***/
 
 void
 bspmap_global_to_local(struct bspmap *p, unsigned *bi, unsigned *bj, unsigned *bli,
@@ -126,8 +114,6 @@ bspmap_global_to_local(struct bspmap *p, unsigned *bi, unsigned *bj, unsigned *b
    }
 }
 
-/*** bspmap_local_idx_is_valid() */
-
 int
 bspmap_local_idx_is_valid(struct bspmap *p, unsigned bidx, unsigned blidx)
 {
@@ -141,8 +127,6 @@ bspmap_local_idx_is_valid(struct bspmap *p, unsigned bidx, unsigned blidx)
 
    return 0;                                     /* not a valid local index */
 }
-
-/*** bspmap_local_to_global() ***/
 
 void
 bspmap_local_to_global(struct bspmap *p, unsigned bi, unsigned bj, unsigned bli,
