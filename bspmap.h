@@ -27,12 +27,12 @@ struct bspmap *bspmap_new(void);
  *  @brief Clean up and free a bspmap structure.
  *  @details FIXME longer description here ...
  */
-void        bspmap_free(struct bspmap *p);
+void        bspmap_free(struct bspmap **pp);
 
 /**
  *  @brief Initialize a bspmap object.
  *  @details FIXME longer description here ...
- *  @param p Pointer to a bspmap object
+ *  @param pp Pointer to a bspmap object.
  *  @param x FIXME
  */
 int         bspmap_init(struct bspmap *p, unsigned nblocks, unsigned *sblocks);

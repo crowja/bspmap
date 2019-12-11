@@ -44,11 +44,12 @@ bspmap_new(void)
 }
 
 void
-bspmap_free(struct bspmap *p)
+bspmap_free(struct bspmap **pp)
 {
 
-   _FREE(p->cblocks);
-   _FREE(p);
+   _FREE((*pp)->cblocks);
+   _FREE(*pp);
+   *pp = NULL;
 }
 
 int

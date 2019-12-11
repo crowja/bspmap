@@ -61,8 +61,8 @@ test_constr(void)
 
    z = bspmap_new();
    ASSERT("Constructor test", z);
-   bspmap_free(z);
-
+   bspmap_free(&z);
+   ASSERT_EQUALS(NULL, z);
 }
 
 static void
@@ -103,7 +103,8 @@ test_global_to_local(void)
    ASSERT_EQUALS(bli, 4);
    ASSERT_EQUALS(blj, 4);
 
-   bspmap_free(z);
+   bspmap_free(&z);
+   ASSERT_EQUALS(NULL, z);
 }
 
 static void
@@ -144,7 +145,8 @@ test_local_to_global(void)
    ASSERT_EQUALS(gi, 7);
    ASSERT_EQUALS(gj, 8);
 
-   bspmap_free(z);
+   bspmap_free(&z);
+   ASSERT_EQUALS(NULL, z);
 }
 
 static void
@@ -175,7 +177,8 @@ test_local_and_global_stress(void)
          ASSERT_EQUALS(gj, tgj);
       }
    }
-   bspmap_free(z);
+   bspmap_free(&z);
+   ASSERT_EQUALS(NULL, z);
 }
 
 static void
@@ -202,7 +205,8 @@ test_check_local_idx(void)
    ASSERT_EQUALS(0, bspmap_local_idx_is_valid(z, 7, 10));
    ASSERT_EQUALS(0, bspmap_local_idx_is_valid(z, 8, 0));
 
-   bspmap_free(z);
+   bspmap_free(&z);
+   ASSERT_EQUALS(NULL, z);
 }
 
 static void
@@ -228,10 +232,11 @@ test_check_global_idx(void)
    for (k = n; k < 2 * n; k++)
       ASSERT_EQUALS(0, bspmap_global_idx_is_valid(z, k));
 
-   bspmap_free(z);
+   bspmap_free(&z);
+   ASSERT_EQUALS(NULL, z);
 }
 
-#if 0                                            /* 14 yy */
+#if 0                                            /* 15 yy */
 static void
 test_stub(void)
 {
@@ -244,7 +249,8 @@ test_stub(void)
    ASSERT("Constructor test, pt 1", z);
    ASSERT("Here's a test ...", _two_doubles_equal(x, 1.23));
 
-   bspmap_free(z);
+   bspmap_free(&z);
+   ASSERT_EQUALS(NULL, z);
 }
 #endif
 
