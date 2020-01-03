@@ -1,6 +1,6 @@
 /**
  *  @file bspmap.c
- *  @version 0.1.1-dev0
+ *  @version 0.2.0-dev0
  *  @date Sat Dec  7 11:39:34 CST 2019
  *  @copyright 2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>
@@ -70,7 +70,7 @@ bspmap_init(struct bspmap *p, unsigned nblocks, unsigned *sblocks)
 const char *
 bspmap_version(void)
 {
-   return "0.1.1-dev0";
+   return "0.2.0-dev0";
 }
 
 int
