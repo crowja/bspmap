@@ -2,9 +2,8 @@
  *  @file bspmap.h
  *  @version 0.1.1-dev0
  *  @date Sat Dec  7 11:39:34 CST 2019
- *  @copyright %COPYRIGHT%
- *  @brief FIXME
- *  @details FIXME
+ *  @copyright 2020 John A. Crow <crowja@gmail.com>
+ *  @license Unlicense <http://unlicense.org/>
  */
 
 #ifndef _BSPMAP_H_
