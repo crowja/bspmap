@@ -78,8 +78,8 @@ indent: stamp
 	@indent $(INDENT_FLAGS) ex/ex_1.c
 
 stamp:
-	@bash stamper.bash bspmap.c
-	@bash stamper.bash bspmap.h
+	@stamper.bash bspmap.c
+	@stamper.bash bspmap.h
 
 clean:
 	@/bin/rm -f *.o *~ *.BAK *.bak core.*
