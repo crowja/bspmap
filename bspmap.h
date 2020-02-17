@@ -1,18 +1,13 @@
 /**
  *  @file bspmap.h
  *  @version 0.2.0-dev0
- *  @date Sat Dec  7 11:39:34 CST 2019
+ *  @date Sun Feb 16, 2020 08:18:06 PM CST
  *  @copyright 2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>
  */
 
-#ifndef _BSPMAP_H_
-#define _BSPMAP_H_
-
-#ifdef  _PACKAGE_NAME
-#undef  _PACKAGE_NAME
-#endif
-#define _PACKAGE_NAME "bspmap"
+#ifndef BSPMAP_H
+#define BSPMAP_H
 
 struct bspmap;
 

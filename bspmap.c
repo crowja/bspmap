@@ -1,7 +1,7 @@
 /**
  *  @file bspmap.c
  *  @version 0.2.0-dev0
- *  @date Sat Dec  7 11:39:34 CST 2019
+ *  @date Sun Feb 16, 2020 08:18:06 PM CST
  *  @copyright 2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>
  */
@@ -11,15 +11,15 @@
 #include <string.h>                              /* FIXME */
 #include "bspmap.h"
 
-#ifdef  _IS_NULL
-#undef  _IS_NULL
+#ifdef  IS_NULL
+#undef  IS_NULL
 #endif
-#define _IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
+#define IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
 
-#ifdef  _FREE
-#undef  _FREE
+#ifdef  FREE
+#undef  FREE
 #endif
-#define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
+#define FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 struct bspmap {
    void       *x;
@@ -33,7 +33,7 @@ bspmap_new(void)
    struct bspmap *tp;
 
    tp = (struct bspmap *) malloc(sizeof(struct bspmap));
-   if (_IS_NULL(tp))
+   if (IS_NULL(tp))
       return NULL;
 
    tp->nblocks = 0;
@@ -46,8 +46,8 @@ void
 bspmap_free(struct bspmap **pp)
 {
 
-   _FREE((*pp)->cblocks);
-   _FREE(*pp);
+   FREE((*pp)->cblocks);
+   FREE(*pp);
    *pp = NULL;
 }
 
@@ -145,5 +145,5 @@ bspmap_local_to_global(struct bspmap *p, unsigned bi, unsigned bj, unsigned bli,
       *gj = blj;
 }
 
-#undef  _IS_NULL
-#undef  _FREE
+#undef  IS_NULL
+#undef  FREE
