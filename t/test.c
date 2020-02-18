@@ -5,60 +5,14 @@
 #include <string.h>
 #include "bspmap.h"
 #include "t/tinytest.h"
-
-#ifdef  COLOR_CODE
-#undef  COLOR_CODE
-#endif
-#define COLOR_CODE       0x1B
-
-#ifdef  COLOR_RED
-#undef  COLOR_RED
-#endif
-#define COLOR_RED        "[1;31m"
-
-#ifdef  COLOR_GREEN
-#undef  COLOR_GREEN
-#endif
-#define COLOR_GREEN      "[1;32m"
-
-#ifdef  COLOR_YELLOW
-#undef  COLOR_YELLOW
-#endif
-#define COLOR_YELLOW     "[1;33m"
-
-#ifdef  COLOR_RESET
-#undef  COLOR_RESET
-#endif
-#define COLOR_RESET      "[0m"
-
-
-static void
-printf_test_name(char *name, char *info)
-{
-   printf("%c%s%s%c%s", COLOR_CODE, COLOR_YELLOW, name, COLOR_CODE, COLOR_RESET);
-
-   if (NULL != info)
-      printf(" [%s]\n", info);
-   else
-      printf("\n");
-}
-
-
-static int
-two_doubles_equal(double x, double y)
-{
-   double      t = fabs(x) + fabs(y);
-   return fabs(x - y) < 4 * DBL_EPSILON * t ? 1 : 0;
-}
-
+#include "t/tinyhelp.h"
 
 static void
 test_constr(void)
 {
    struct bspmap *z;
 
-   printf_test_name("test_constr", "bspmap_new, bspmap_free");
-
+   fprintf_test_info(stdout, "test_constr", "bspmap_new, bspmap_free");
    z = bspmap_new();
    ASSERT("Constructor test", z);
    bspmap_free(&z);
@@ -75,8 +29,7 @@ test_global_to_local(void)
    unsigned    bli, blj;
    unsigned    gi, gj;
 
-   printf_test_name("test_global_to_local", "bspmap_global_to_local");
-
+   fprintf_test_info(stdout, "test_global_to_local", "bspmap_global_to_local");
    bspmap_init(z, nblocks, sblocks);
 
    gi = 0;
@@ -117,7 +70,7 @@ test_local_to_global(void)
    unsigned    bli, blj;
    unsigned    gi, gj;
 
-   printf_test_name("test_local_to_global", "bspmap_local_to_global");
+   fprintf_test_info(stdout, "test_local_to_global", "bspmap_local_to_global");
 
    bspmap_init(z, nblocks, sblocks);
 
@@ -161,7 +114,7 @@ test_local_and_global_stress(void)
    unsigned    tgi, tgj;
    unsigned    k, n;
 
-   printf_test_name("test_local_and_global_stress",
+   fprintf_test_info(stdout, "test_local_and_global_stress",
                     "bspmap_local_to_global, bspmap_global_to_local");
 
    for (k = 0, n = 0; k < nblocks; k++)
@@ -189,7 +142,7 @@ test_check_local_idx(void)
    unsigned    nblocks = 8;                 /* needs to reflect above */
    unsigned    k, n;
 
-   printf_test_name("test_check_local_idx", "bspmap_local_idx_is_valid");
+   fprintf_test_info(stdout, "test_check_local_idx", "bspmap_local_idx_is_valid");
 
    for (k = 0, n = 0; k < nblocks; k++)
       n += sblocks[k];
@@ -217,7 +170,7 @@ test_check_global_idx(void)
    unsigned    nblocks = 8;                 /* needs to reflect above */
    unsigned    k, n;
 
-   printf_test_name("test_check_global_idx", "bspmap_global_idx_is_valid");
+   fprintf_test_info(stdout, "test_check_global_idx", "bspmap_global_idx_is_valid");
 
    for (k = 0, n = 0; k < nblocks; k++)
       n += sblocks[k];
@@ -236,24 +189,18 @@ test_check_global_idx(void)
    ASSERT_EQUALS(NULL, z);
 }
 
-#if 0                                            /* 15 yy */
+#if 0                                            /* 10 yy */
 static void
 test_stub(void)
 {
    struct bspmap *z;
-   double      x = 1.23;                    /* TODO */
 
-   printf_test_name("test_stub()", NULL);
-
+   fprintf_test_info(stdout, "test_stub", NULL);
    z = bspmap_new();
-   ASSERT("Constructor test, pt 1", z);
-   ASSERT("Here's a test ...", two_doubles_equal(x, 1.23));
-
    bspmap_free(&z);
    ASSERT_EQUALS(NULL, z);
 }
 #endif
-
 
 int
 main(void)
